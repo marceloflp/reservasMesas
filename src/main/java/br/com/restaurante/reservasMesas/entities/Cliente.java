@@ -1,4 +1,4 @@
-package br.com.restaurante.reservasMesas;
+package br.com.restaurante.reservasMesas.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -78,7 +78,7 @@ public class Cliente implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, nome, senha, telefone);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -90,8 +90,7 @@ public class Cliente implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
-				&& Objects.equals(senha, other.senha) && Objects.equals(telefone, other.telefone);
+		return Objects.equals(id, other.id);
 	}
 	
 }
