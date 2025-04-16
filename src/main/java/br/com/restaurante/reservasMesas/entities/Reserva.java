@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import br.com.restaurante.reservasMesas.entities.enums.ReservaStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,19 +31,19 @@ public class Reserva  implements Serializable{
 	private LocalTime horario;
 	
 	private Integer numPessoas;
-	private String status;
+	private Integer status;
 	
 	public Reserva() {
 		
 	}
 
-	public Reserva(Long id, Instant data, LocalTime horario, Integer numPessoas, String status) {
+	public Reserva(Long id, Instant data, LocalTime horario, Integer numPessoas, ReservaStatus status) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.horario = horario;
 		this.numPessoas = numPessoas;
-		this.status = status;
+		setStatus(status);
 	}
 
 	public Long getId() {
@@ -77,12 +78,14 @@ public class Reserva  implements Serializable{
 		this.numPessoas = numPessoas;
 	}
 
-	public String getStatus() {
-		return status;
+	public ReservaStatus getStatus() {
+		return ReservaStatus.valueOf(status);
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatus(ReservaStatus status) {
+		if(status != null) {
+			this.status = status.getCode();
+		}
 	}
 
 	@Override
