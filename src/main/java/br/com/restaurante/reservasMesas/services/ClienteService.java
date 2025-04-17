@@ -38,7 +38,6 @@ public class ClienteService {
 	}
 	
 	private void updateCliente(Cliente cliente, Cliente obj) {
-		cliente.setId(obj.getId());
 		cliente.setNome(obj.getNome());
 		cliente.setTelefone(obj.getTelefone());
 		cliente.setEmail(obj.getEmail());
